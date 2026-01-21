@@ -3,20 +3,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:counter/counter_cubit.dart';
 
+// class CounterPage extends StatelessWidget {
+//   const CounterPage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//       create: (context) => CounterCubit(0),
+//       child: BlocConsumer<CounterCubit, int>(
+//         listener: (context, state) {
+//           if (state > 6) {
+//             showAboutDialog(context: context);
+//           }
+//         },
+//         builder: (context, state) {
+//           return Text('$state');
+//         },
+//       ),
+//     );
+//   }
+// }
+
 class CounterPage extends StatelessWidget {
   const CounterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CounterCubit(0),
+      create: (_) => CounterCubit(0),
       child: BlocListener<CounterCubit, int>(
         listener: (context, state) {
           if (state > 6) {
             showAboutDialog(context: context);
           }
         },
-        child: CounterView(),
+        child: const CounterView(),
       ),
     );
   }
